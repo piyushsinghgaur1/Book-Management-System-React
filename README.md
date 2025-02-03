@@ -1,50 +1,84 @@
-# React + TypeScript + Vite
+# Book Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple yet efficient Book Management System that allows users to manage books by adding, editing, deleting, displaying, and searching for books. The system also supports displaying book prices and discounts, along with a modern responsive design using **Tailwind CSS**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Add Books
 
-## Expanding the ESLint configuration
+- Users can enter the following book details:
+  - **Title**
+  - **Author**
+  - **ISBN**
+  - **Publication Date**
+  - **Genre**
+- All fields are required.
+- Input is validated:
+  - **ISBN** must be a numeric value.
+  - **Publication Date** cannot be a future date.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 2. Edit and Delete Books
 
-- Configure the top-level `parserOptions` property like this:
+- **Edit**: Users can modify existing book details using the **Edit** button.
+- **Delete**: Users can remove books from the list using the **Delete** button.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 3. Input Validations
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **ISBN**: Must be a valid number.
+- **Publication Date**: Cannot be set to a future date.
+- **All fields** are mandatory before submission.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 4. Search
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Users can search for books by **Title**, **Author**, or **ISBN** using a search bar to quickly find relevant books.
+
+### 5. Sorting of Books
+
+- The books are displayed in alphabetical order by the **Author**.
+
+### 6. Show Price and Discount of Books
+
+- The application can display book prices, including any applicable discounts.
+
+### 7. Tailwind CSS Integration
+
+- The application utilizes **Tailwind CSS** for a modern, clean, and responsive design.
+
+## Technologies Used
+
+- **HTML**: For structuring the content.
+- **CSS**: For styling (in conjunction with Tailwind CSS).
+- **JavaScript**: For handling dynamic actions.
+- **TypeScript**: For type safety and enhanced code quality.
+- **Tailwind CSS**: For a modern, responsive design.
+- **Vite**: A fast and efficient build tool.
+
+## Setup Instructions
+
+Follow these steps to get your Book Management System up and running locally:
+
+## Setup Instructions
+
+1. **Clone this repository** or download the code files:
+
+   ```bash
+   git clone https://github.com/piyushsinghgaur1/Book-Management-System-React.git
+   ```
+
+2. **Navigate into the project directory**:
+
+   ```bash
+   cd book-management-system
+   ```
+
+3. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**:
+
+   ```bash
+   npm run dev
+   ```
