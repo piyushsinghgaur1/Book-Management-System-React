@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 
-const Homepage: React.FC = () => {
+const Homepage: React.FC = () => {  
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col">
       {/* Header Section */}
@@ -47,7 +47,7 @@ const Homepage: React.FC = () => {
               </p>
             </div>
 
-            {/* Feature 3: Track Progress */}
+            {/* Feature 3: Book Age */}
             <div className="bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 ease-in-out hover:bg-green-600">
               <h3 className="text-xl font-semibold text-white">Book Age Calculation</h3>
               <p className="text-gray-300 mt-2  hover:text-white">
@@ -56,7 +56,6 @@ const Homepage: React.FC = () => {
             </div>
           </div>
 
-          {/* Call to Action */}
           <div className="mt-12 text-center">
             <p className="text-lg text-gray-400">Ready to get started?</p>
             <Link
