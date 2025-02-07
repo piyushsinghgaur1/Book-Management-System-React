@@ -14,7 +14,6 @@ interface BookType {
   publicationDate: string;
   price: number;
   discountPrice: number;
-  imageUrl: string;
 }
 
 function BookManager() {
@@ -26,6 +25,7 @@ function BookManager() {
   >("title");
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [books, setBooks] = useState<BookType[]>([]);
+  let isValid = false;
 
   // Load books from localStorage
   useEffect(() => {
@@ -44,35 +44,47 @@ function BookManager() {
 
   // Form validation for adding or editing books
   const handleFormValidation = (newBook: BookType): boolean => {
-    if (
-      !newBook.title ||
-      !newBook.author ||
-      !newBook.genre ||
-      isNaN(newBook.price) ||
-      isNaN(newBook.discountPrice)
-    ) {
-      toast.error("Please fill all required fields.");
-      return false;
+    isValid = true;
+    if (!newBook.title) {
+      toast.error("Please fill Title.");
+      isValid = false;
     }
+    if (!newBook.author) {
+      toast.error("Please fill Author.");
+      isValid = false;
+    }
+    if (!newBook.genre) {
+      toast.error("Please fill genre.");
+      isValid = false;
+    }
+    if (!newBook.isbn) {
+      toast.error("Please fill ISBN.");
+      isValid = false;
+    }
+    if (!newBook.publicationDate) {
+      toast.error("Please fill Publication Date.");
+      isValid = false;
+    }
+
     if (newBook.price < 0 || newBook.discountPrice < 0) {
       toast.error("Price cannot be negative.");
-      return false;
+      isValid = false;
     }
     if (newBook.discountPrice > newBook.price) {
       toast.error("Discount price cannot be greater than the actual price.");
-      return false;
+      isValid = false;
     }
     if (newBook.publicationDate > new Date().toISOString().split("T")[0]) {
       toast.error("Publication date cannot be in the future.");
-      return false;
+      isValid = false;
     }
-    return true;
+    return isValid;
   };
 
   // Function to handle adding or editing books
   const handleAddOrEditBook = (book: BookType) => {
     if (!handleFormValidation(book)) {
-      return; // If validation fails, do not proceed
+      return;
     }
 
     let updatedBooks: BookType[];
@@ -138,6 +150,7 @@ function BookManager() {
         <button
           onClick={() => setModalOpen(true)}
           className="text-2xl px-6 py-3 m-5 bg-green-600 text-white rounded-full"
+          data-testid="AddBook"
         >
           Add Book
         </button>
@@ -152,6 +165,7 @@ function BookManager() {
             }
             placeholder="Search"
             className="px-4 py-2 w-full sm:w-1/3 rounded-md border-2"
+            data-testid="searchInput"
           />
 
           {/* Sort Label and Dropdown */}
@@ -168,6 +182,7 @@ function BookManager() {
                 )
               }
               className="px-4 py-2 rounded-md border-2 min-w-[150px]"
+              data-testid="sortCategory"
             >
               <option value="title">Title</option>
               <option value="author">Author</option>
@@ -179,19 +194,24 @@ function BookManager() {
           {/* Sort Button */}
           <button
             onClick={handleSort}
+            data-testid="sortBtn"
             className="px-4 py-2 bg-green-600 text-white rounded-md"
           >
             {sortOrder === "asc" ? <FaSortAlphaDown /> : <FaSortAlphaUp />}
           </button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+          data-testid="booksContainer"
+        >
           {filteredBooks.map((book, index) => (
-            <div key={index} className="w-full p-4">
+            <div key={index} className="w-full p-4" data-testid="bookItem">
               <BookCard
                 {...book}
                 onEdit={() => handleEditBook(index)}
                 onDelete={() => handleDeleteBook(index)}
+                data-testid={`book-${index}`}
               />
             </div>
           ))}

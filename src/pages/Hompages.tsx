@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Footer from '../components/Footer';
+import React from "react";
+import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
-const Homepage: React.FC = () => {  
+const Homepage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col">
       {/* Header Section */}
@@ -12,7 +12,8 @@ const Homepage: React.FC = () => {
             Welcome to Book Management System
           </h1>
           <p className="mt-4 text-lg sm:text-xl max-w-lg mx-auto">
-            Easily manage your books and track your reading progress in one place.
+            Easily manage your books and track your reading progress in one
+            place.
           </p>
         </div>
       </header>
@@ -25,7 +26,8 @@ const Homepage: React.FC = () => {
               Features of Our System
             </h2>
             <p className="text-gray-400 mt-4 text-lg max-w-2xl mx-auto">
-              Our Book Management System offers a range of features to help you organize and manage your books effectively.
+              Our Book Management System offers a range of features to help you
+              organize and manage your books effectively.
             </p>
           </div>
 
@@ -35,23 +37,31 @@ const Homepage: React.FC = () => {
             <div className="bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 ease-in-out hover:bg-green-600">
               <h3 className="text-xl font-semibold text-white">Manage Books</h3>
               <p className="text-gray-300 mt-2 hover:text-white">
-                Add, edit, and delete books in your collection easily. Keep your library organized and up to date.
+                Add, edit, and delete books in your collection easily. Keep your
+                library organized and up to date.
               </p>
             </div>
 
             {/* Feature 2: Sort, Filter, & Search */}
             <div className="bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 ease-in-out hover:bg-green-600">
-              <h3 className="text-xl font-semibold text-white">Sort, Filter & Search</h3>
+              <h3 className="text-xl font-semibold text-white">
+                Sort, Filter & Search
+              </h3>
               <p className="text-gray-300 mt-2  hover:text-white">
-                Sort books by title, filter them by category or age group, and search quickly to find exactly what you're looking for.
+                Sort books by title, filter them by category or age group, and
+                search quickly to find exactly what you're looking for.
               </p>
             </div>
 
             {/* Feature 3: Book Age */}
             <div className="bg-gray-700 shadow-lg rounded-lg p-6 hover:shadow-2xl transition duration-300 ease-in-out hover:bg-green-600">
-              <h3 className="text-xl font-semibold text-white">Book Age Calculation</h3>
+              <h3 className="text-xl font-semibold text-white">
+                Book Age Calculation
+              </h3>
               <p className="text-gray-300 mt-2  hover:text-white">
-                Book’s age can lead to better recommendations. For instance, a user might want to discover newer books in a particular category, or explore older books.
+                Book’s age can lead to better recommendations. For instance, a
+                user might want to discover newer books in a particular
+                category, or explore older books.
               </p>
             </div>
           </div>
@@ -69,7 +79,7 @@ const Homepage: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <Footer/> 
+      <Footer />
     </div>
   );
 };

@@ -10,7 +10,6 @@ interface BookType {
   publicationDate: string;
   price: number;
   discountPrice: number;
-  imageUrl: string;
 }
 
 interface AddBookModalProps {
@@ -34,7 +33,6 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
     publicationDate: "",
     price: 0,
     discountPrice: 0,
-    imageUrl: "",
   };
 
   const [formValues, setFormValues] = useState<BookType>(initialFormValues);
@@ -82,11 +80,15 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
         {/* Close Button */}
         <button
           onClick={handleClose}
+          data-testid="closeBtn"
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
         >
           <X size={24} />
         </button>
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">
+        <h2
+          data-testid="BookForm"
+          className="text-xl font-semibold text-gray-800 mb-4"
+        >
           {bookData ? "Edit Book" : "Add Book"}
         </h2>
 
@@ -103,10 +105,10 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
                 id="title"
                 name="title"
                 value={formValues.title}
+                data-testid="title"
                 onChange={handleChange}
                 placeholder="Enter Book Title"
                 className="w-full py-2 px-3 border border-gray-300 rounded-md"
-                required
               />
             </div>
 
@@ -117,11 +119,11 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
                 type="text"
                 id="author"
                 name="author"
+                data-testid="author"
                 value={formValues.author}
                 onChange={handleChange}
                 placeholder="Enter Author Name"
                 className="w-full py-2 px-3 border border-gray-300 rounded-md"
-                required
               />
             </div>
 
@@ -129,14 +131,14 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
             <div>
               <label htmlFor="isbn">ISBN</label>
               <input
-                type="number"
+                type="text"
                 id="isbn"
                 name="isbn"
+                data-testid="isbn"
                 value={formValues.isbn}
                 onChange={handleChange}
                 placeholder="Enter ISBN"
                 className="w-full py-2 px-3 border border-gray-300 rounded-md"
-                required
               />
             </div>
 
@@ -147,10 +149,10 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
                 type="date"
                 id="publicationDate"
                 name="publicationDate"
+                data-testid="publicationDate"
                 value={formValues.publicationDate}
                 onChange={handleChange}
                 className="w-full py-2 px-3 border border-gray-300 rounded-md"
-                required
               />
             </div>
 
@@ -161,11 +163,11 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
                 type="number"
                 id="price"
                 name="price"
+                data-testid="price"
                 value={formValues.price || ""}
                 onChange={handleChange}
                 placeholder="Enter Price"
                 className="w-full py-2 px-3 border border-gray-300 rounded-md"
-                required
               />
             </div>
 
@@ -176,11 +178,11 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
                 type="number"
                 id="discountPrice"
                 name="discountPrice"
+                data-testid="discountPrice"
                 value={formValues.discountPrice || ""}
                 onChange={handleChange}
                 placeholder="Enter Discount Price"
                 className="w-full py-2 px-3 border border-gray-300 rounded-md"
-                required
               />
             </div>
 
@@ -191,9 +193,9 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
                 id="genre"
                 name="genre"
                 value={formValues.genre}
+                data-testid="genre"
                 onChange={handleChange}
                 className="w-full py-2 px-3 border border-gray-300 rounded-md"
-                required
               >
                 <option value="">Select Genre</option>
                 <option value="fiction">Fiction</option>
@@ -211,12 +213,14 @@ const AddBookModal: React.FC<AddBookModalProps> = ({
           <div className="flex flex-col sm:flex-row justify-between sm:space-x-4">
             <button
               type="submit"
+              data-testid="addBookBtn"
               className="bg-green-600 p-3 text-white hover:bg-green-500 rounded-lg w-full sm:w-auto"
             >
               {bookData ? "Update Book" : "Add Book"}
             </button>
             <button
               type="reset"
+              data-testid="resetBtn"
               className="bg-red-500 p-3 text-white hover:bg-red-400 rounded-lg w-full sm:w-auto"
               onClick={() =>
                 bookData ? handleCancel() : setFormValues(initialFormValues)
